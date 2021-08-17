@@ -25,9 +25,7 @@ class _ListDayState extends State<ListDay> {
             if (snapshot.data!.isEmpty) {
               print(widget.id);
               return const Center(
-                child: Expanded(
-                  child: Text('Could not find items'),
-                ),
+                child: Text('Could not find items'),
               );
             }
             return ListView.builder(
@@ -42,9 +40,7 @@ class _ListDayState extends State<ListDay> {
             );
           }
           return Center(
-            child: Expanded(
-              child: Text('Loading...'),
-            ),
+            child: Text('Loading...'),
           );
         },
     );

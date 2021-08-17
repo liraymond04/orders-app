@@ -23,34 +23,32 @@ class _HomePageState extends State<HomePage> {
       ),
       body:Column(
         children: <Widget>[
-          Expanded(
-            child: StreamBuilder(
-              stream: Database(firestore: widget.firestore).streamDays(),
-              builder: (BuildContext context, AsyncSnapshot<List<Day> > snapshot) {
-                if (snapshot.connectionState == ConnectionState.active) {
-                  if (snapshot.data?.isEmpty ?? true) {
-                    return const Center(
-                      child: Text('Cannot load items'),
-                    );
-                  }
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (_, index) {
-                      return Column(
-                        children: <Widget>[
-                          Text(snapshot.data![index].name),
-                          ListDay(id: snapshot.data![index].id, firestore: widget.firestore),
-                        ],
-                      );
-                    },
+          StreamBuilder(
+            stream: Database(firestore: widget.firestore).streamDays(),
+            builder: (BuildContext context, AsyncSnapshot<List<Day> > snapshot) {
+              if (snapshot.connectionState == ConnectionState.active) {
+                if (snapshot.data?.isEmpty ?? true) {
+                  return const Center(
+                    child: Text('Cannot load items'),
                   );
                 }
-                return Center(
-                  child: Text('Loading...'),
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (_, index) {
+                    return Column(
+                      children: <Widget>[
+                        Text(snapshot.data![index].name),
+                        ListDay(id: snapshot.data![index].id, firestore: widget.firestore),
+                      ],
+                    );
+                  },
                 );
-              },
-            ),
+              }
+              return Center(
+                child: Text('Loading...'),
+              );
+            },
           ),
         ],
       ),
