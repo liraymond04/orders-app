@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:orders_app/screens/home.dart';
+import 'package:orders_app/models/cart.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => Cart()),
+      ],
+      child: MyApp()
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

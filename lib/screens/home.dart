@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:orders_app/models/day.dart';
-import 'package:orders_app/services/database.dart';
-import 'package:orders_app/widgets/list_day.dart';
+import 'package:orders_app/widgets/list_widget.dart';
+import 'package:orders_app/widgets/pay_button.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -21,35 +20,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Home'),
       ),
-      body:Column(
+      body: Column(
         children: <Widget>[
-          StreamBuilder(
-            stream: Database(firestore: widget.firestore).streamDays(),
-            builder: (BuildContext context, AsyncSnapshot<List<Day> > snapshot) {
-              if (snapshot.connectionState == ConnectionState.active) {
-                if (snapshot.data?.isEmpty ?? true) {
-                  return const Center(
-                    child: Text('Cannot load items'),
-                  );
-                }
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (_, index) {
-                    return Column(
-                      children: <Widget>[
-                        Text(snapshot.data![index].name),
-                        ListDay(id: snapshot.data![index].id, firestore: widget.firestore),
-                      ],
-                    );
-                  },
-                );
-              }
-              return Center(
-                child: Text('Loading...'),
-              );
-            },
-          ),
+          ListWidget(firestore: widget.firestore),
+          PayButton(),
         ],
       ),
     );

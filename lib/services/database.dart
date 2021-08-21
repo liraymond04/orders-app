@@ -17,6 +17,7 @@ class Database {
         for (final DocumentSnapshot doc in query.docs) {
           retVal.add(Day.fromDocumentSnapshot(documentSnapshot: doc));
         }
+        retVal.sort((a, b) => a.order.compareTo(b.order));
         return retVal;
       });
     } catch (e) {
@@ -36,6 +37,7 @@ class Database {
         for (final DocumentSnapshot doc in query.docs) {
           retVal.add(Item.fromDocumentSnapshot(documentSnapshot: doc));
         }
+        retVal.sort((a, b) => a.order.compareTo(b.order));
         return retVal;
       });
     } catch (e) {

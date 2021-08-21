@@ -29,6 +29,7 @@ class _ListDayState extends State<ListDay> {
               );
             }
             return ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: snapshot.data!.length,
               itemBuilder: (_, index) {
