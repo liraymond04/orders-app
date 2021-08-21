@@ -31,7 +31,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      margin: const EdgeInsets.only( right: 10.0),
+                      margin: const EdgeInsets.only(right: 10.0),
                       child: Row(
                         children: <Widget>[
                           Icon(
@@ -56,7 +56,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      margin: const EdgeInsets.only( right: 10.0),
+                      margin: const EdgeInsets.only(right: 10.0),
                       child: Row(
                         children: <Widget>[
                           Icon(
@@ -87,7 +87,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      margin: const EdgeInsets.only( right: 10.0),
+                      margin: const EdgeInsets.only(right: 10.0),
                       child: Row(
                         children: <Widget>[
                           Icon(

@@ -31,7 +31,9 @@ class ListWidgetState extends State<ListWidget> {
               shrinkWrap: true,
               itemCount: snapshot.data!.length,
               itemBuilder: (_, index) {
-                return Column(
+                return Container(
+                  margin: const EdgeInsets.only(top: 7.5),
+                child: Column(
                   children: <Widget>[
                     Text(snapshot.data![index].name),
                     ListDay(
@@ -39,6 +41,7 @@ class ListWidgetState extends State<ListWidget> {
                       firestore: widget.firestore,
                     ),
                   ],
+                ),
                 );
               },
             ),
