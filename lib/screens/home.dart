@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:orders_app/widgets/list_widget.dart';
 import 'package:orders_app/widgets/pay_button.dart';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
   final FirebaseFirestore firestore;
+  final FirebaseStorage storage;
 
-  const HomePage({ Key? key, required this.firestore }) : super(key: key);
+  const HomePage({ Key? key, required this.firestore, required this.storage }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();

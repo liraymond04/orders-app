@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ListWidget extends StatefulWidget {
   final FirebaseFirestore firestore;
+  
   const ListWidget({ Key? key, required this.firestore }) : super(key: key);
 
   @override
@@ -35,7 +36,13 @@ class ListWidgetState extends State<ListWidget> {
                   margin: const EdgeInsets.only(top: 7.5),
                 child: Column(
                   children: <Widget>[
-                    Text(snapshot.data![index].name),
+                    Text(
+                      snapshot.data![index].name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
                     ListDay(
                       id: snapshot.data![index].id,
                       firestore: widget.firestore,
@@ -48,7 +55,7 @@ class ListWidgetState extends State<ListWidget> {
           );
         }
         return Center(
-          child: Text('Loading...'),
+          child: CircularProgressIndicator(),
         );
       },
     );

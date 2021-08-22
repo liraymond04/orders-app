@@ -6,6 +6,7 @@ import 'package:orders_app/screens/item.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ListItem extends StatefulWidget {
   final Item item;
@@ -36,14 +37,45 @@ class _ListItemState extends State<ListItem> {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-              Expanded(
-                child: Text(
-                  widget.item.name,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+              CachedNetworkImage(
+                imageUrl: widget.item.image,
+                imageBuilder: (context, imageProvider) => ClipOval(
+                  child: Container(
+                    width: 65.0,
+                    height: 43.0,
+                    child: Center(
+                      child: Image(
+                        image: imageProvider
+                      ),
+                    ),
                   ),
                 ),
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Column(
+                children: [
+                  Text(
+                    widget.item.name,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '\$${widget.item.price.toStringAsFixed(2)}',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: 10,
               ),
               Expanded(
                 child: Text(
@@ -54,15 +86,7 @@ class _ListItemState extends State<ListItem> {
                   ),
                 ),
               ),
-              Expanded(
-                child: Text(
-                  '\$${widget.item.price.toStringAsFixed(2)}',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
+              Spacer(),
               Checkbox(
                 value: widget.item.selected,
                 onChanged: (newValue) {

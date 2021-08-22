@@ -5,6 +5,7 @@ class Item {
   String description = '';
   num price = 0;
   int order = -1;
+  String image = '';
   bool selected = false;
 
   Item({
@@ -12,6 +13,7 @@ class Item {
     required this.description,
     required this.price,
     required this.order,
+    required this.image,
     required this.selected,
   });
 
@@ -20,5 +22,6 @@ class Item {
     description = documentSnapshot['description'] as String;
     price = documentSnapshot['price'] as num;
     order = documentSnapshot['order'] as int;
+    image = documentSnapshot['image'] as String;
   }
 }

@@ -41,7 +41,7 @@ class _ListDayState extends State<ListDay> {
             );
           }
           return Center(
-            child: Text('Loading...'),
+            child: CircularProgressIndicator(),
           );
         },
     );
