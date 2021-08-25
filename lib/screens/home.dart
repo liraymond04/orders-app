@@ -25,7 +25,10 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: <Widget>[
           ListWidget(firestore: widget.firestore),
-          PayButton(),
+          Container(
+            margin: EdgeInsets.only(bottom: 20.0),
+            child: PayButton(),
+          ),
         ],
       ),
     );

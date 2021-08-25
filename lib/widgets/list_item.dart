@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orders_app/models/item.dart';
 import 'package:orders_app/models/cart.dart';
-import 'package:orders_app/screens/item.dart';
+// import 'package:orders_app/screens/item.dart';
 // import 'package:orders_app/utils/constants.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -26,12 +26,12 @@ class _ListItemState extends State<ListItem> {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) {
-              return ItemPage(item: widget.item);
-            }),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) {
+          //     return ItemPage(item: widget.item);
+          //   }),
+          // );
         },
         child: Padding(
           padding: const EdgeInsets.all(10.0),
