@@ -25,7 +25,7 @@ class Database {
     }
   }
 
-  Stream<List<Item>> streamItems({required String id}) {
+  Stream<List<Item>> streamItems({required String id, required int index}) {
     try {
       return firestore
           .collection("days")
@@ -35,7 +35,7 @@ class Database {
           .map((query) {
         final List<Item> retVal = <Item>[];
         for (final DocumentSnapshot doc in query.docs) {
-          retVal.add(Item.fromDocumentSnapshot(documentSnapshot: doc));
+          retVal.add(Item.fromDocumentSnapshot(documentSnapshot: doc, day: index));
         }
         retVal.sort((a, b) => a.order.compareTo(b.order));
         return retVal;

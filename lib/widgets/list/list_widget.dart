@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orders_app/models/day.dart';
 import 'package:orders_app/services/database.dart';
-import 'package:orders_app/widgets/list_day.dart';
+import 'package:orders_app/widgets/list/list_day.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -45,6 +45,7 @@ class ListWidgetState extends State<ListWidget> {
                     ),
                     ListDay(
                       id: snapshot.data![index].id,
+                      index: index,
                       firestore: widget.firestore,
                     ),
                   ],

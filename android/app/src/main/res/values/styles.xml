@@ -15,4 +15,10 @@
     <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">?android:colorBackground</item>
     </style>
+
+    <style name="sqip.Theme.CardEntry" parent="sqip.Theme.BaseCardEntry">
+        <item name="sqipSaveButtonText">@string/pay_button</item>
+        <item name="sqipActivityTitle">@string/pay_activity_title</item>
+    </style>
+
 </resources>

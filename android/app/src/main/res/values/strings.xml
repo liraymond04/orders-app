@@ -1,0 +1,4 @@
+<resources>
+    <string name="pay_button">Pay</string>
+    <string name="pay_activity_title">Payment details</string>
+</resources>

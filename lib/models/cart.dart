@@ -21,14 +21,38 @@ class Cart extends ChangeNotifier {
   }
 
   void add(Item item) {
-    if (!_items.contains(item)) {
+    if (!contains(item)) {
       _items.add(item);
     }
     notifyListeners();
   }
 
   void remove(Item item) {
-    _items.remove(item);
+    int remove = -1;
+    for (int i=0; i<_items.length; i++) {
+      if (_items[i].name == item.name) {
+        remove = i;
+      };
+    }
+    if (remove != -1) {
+      _items.removeAt(remove);
+    }
     notifyListeners();
+  }
+
+  bool contains(Item item) {
+    for (Item i in _items) {
+      if (i.name == item.name) return true;
+    }
+    return false;
+  }
+
+  List<Map<String, dynamic> > toLineItems() {
+    List<Map<String, dynamic> > result = [];
+    for (int i=0; i<_items.length; i++) {
+      Map<String, dynamic> cur = _items[i].toLineItem();
+      result.add(cur);
+    }
+    return result;
   }
 }

@@ -48,3 +48,7 @@ app.*.map.json
 # Firebase SDK
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
+
+# Environment variables
+*.env
+lib/config.dart

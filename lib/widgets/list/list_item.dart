@@ -1,8 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:orders_app/models/item.dart';
 import 'package:orders_app/models/cart.dart';
-// import 'package:orders_app/screens/item.dart';
-// import 'package:orders_app/utils/constants.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +18,16 @@ class ListItem extends StatefulWidget {
 }
 
 class _ListItemState extends State<ListItem> {
+  bool selected = false;
+
+  @override void initState() {
+    super.initState();
+    var cart = context.read<Cart>();
+    if (cart.contains(widget.item)) {
+      selected = true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var cart = context.read<Cart>();
@@ -88,7 +97,7 @@ class _ListItemState extends State<ListItem> {
               ),
               Spacer(),
               Checkbox(
-                value: widget.item.selected,
+                value: selected,
                 onChanged: (newValue) {
                   if (newValue as bool) {
                     cart.add(widget.item);
@@ -96,7 +105,7 @@ class _ListItemState extends State<ListItem> {
                     cart.remove(widget.item);
                   }
                   setState(() {
-                    widget.item.selected = newValue;
+                    selected = newValue;
                   });
                 },
               ),
